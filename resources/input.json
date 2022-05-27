@@ -1,0 +1,18 @@
+{
+    "id": 1,
+    "name": "T-Shirt",
+    "price": "500",
+    "available": true,
+    "variants": [
+      {
+        "color": "white",
+        "size": ["large", "medium", "extra-large"],
+        "quantity": 3
+        },
+      {
+        "color": "red",
+        "size": ["small", "medium"],
+        "quantity": 7
+        } 
+    ]
+}
