@@ -14,7 +14,7 @@ class ProductModelSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $faker->addProvider(new \RauweBieten\PhpFakerClothing\Clothing($faker));
+//        $faker->addProvider(new \RauweBieten\PhpFakerClothing\Clothing($faker));
         for ($i=1; $i<=2; $i++){
             $product = new Product_model;
             $product->name = $faker->clothing();
