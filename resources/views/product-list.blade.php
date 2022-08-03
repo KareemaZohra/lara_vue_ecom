@@ -4,5 +4,10 @@
 @endsection
 
 @section('content')
-<product-list></product-list>
+{{--    @foreach($data as $item)--}}
+{{--        <p>{{$item->name}}</p>--}}
+{{--    @endforeach--}}
+<product-list :prop-item='{!! htmlspecialchars(json_encode($data), ENT_QUOTES, 'UTF-8') !!}'>
+
+</product-list>
 @endsection
