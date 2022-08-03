@@ -2,8 +2,8 @@
     <div class="container" id="collection-group">
         <div class="row">
             <div class="col-md-3 item-card" v-for="item in items">
-                <a href="#" @click.prevent="goToItem($event)">
-                    <div>{{ item.name }}hello</div>
+                <a href="#" v-on:click="goToItem($event, item.id)">
+                    <div>{{item.name}}</div>
                 </a>
             </div>
         </div>
@@ -21,9 +21,9 @@ export default {
     },
     methods:{
 
-        goToItem(event) {
-            let itemLink = '/'+this.trans.getLocale()+'/product/this.propItem.id';
-            window.location.href = itemLink
+        goToItem(event,id) {
+            let itemLink = '/product/'+id;
+            window.location.href = itemLink;
         }
     }
 }

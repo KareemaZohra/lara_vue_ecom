@@ -1,20 +1,20 @@
 <template>
     <div class="container">
-        <div class="col-md-6">
-            <img src="" alt="">
+        <div class="col-md-6 img-holder">
+            <img src="/img/tshirt.jpeg" alt="sample t-shirt" class="img-fluid">
         </div>
         <div class="col-md-6 item-details">
-            big hello
+
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name : "product-list",
+    name : "product-details",
     data(){
         return{
-
+            imgUrl : 'public/img/tshirt.jpeg'
         }
     },
 
@@ -22,6 +22,10 @@ export default {
 </script>
 
 <style scoped>
-
-
+.img-holder{
+    padding: 50px;
+}
+.item-details{
+    padding: 50px;
+}
 </style>
