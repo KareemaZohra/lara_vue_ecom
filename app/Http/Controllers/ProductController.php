@@ -9,6 +9,8 @@ class ProductController extends Controller
 {
     public function show($id)
     {
-        
+        $item = Product_model::query()->where('id', $id)->first();
+
+        return view('single-product',compact('item'));
     }
 }

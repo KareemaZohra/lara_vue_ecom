@@ -5185,13 +5185,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "product-details",
+  props: ['propSingleItem'],
   data: function data() {
     return {
-      imgUrl: 'public/img/tshirt.jpeg'
+      item: this.propSingleItem
     };
-  }
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -42199,22 +42209,35 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 item-details" }, [
+        _c("h2", [_vm._v(_vm._s(_vm.item.name))]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Price : " + _vm._s(_vm.item.price))]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v("\n                Stock :\n                "),
+          _vm.item.available
+            ? _c("span", { staticClass: "green-text" }, [_vm._v("available")])
+            : _c("span", { staticClass: "red-text" }, [_vm._v("unavailable")]),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "col-md-6 img-holder" }, [
-        _c("img", {
-          staticClass: "img-fluid",
-          attrs: { src: "/img/tshirt.jpeg", alt: "sample t-shirt" },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 item-details" }),
+    return _c("div", { staticClass: "col-md-6 img-holder" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: { src: "/img/tshirt.jpeg", alt: "sample t-shirt" },
+      }),
     ])
   },
 ]
