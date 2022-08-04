@@ -5193,15 +5193,76 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "product-details",
   props: ['propSingleItem'],
   data: function data() {
     return {
-      item: this.propSingleItem
+      item: this.propSingleItem,
+      quantity: 1
     };
   },
-  methods: {}
+  methods: {
+    increment: function increment() {
+      this.quantity++;
+    },
+    decrement: function decrement() {
+      if (this.quantity === 1) {
+        alert('Negative quantity not allowed');
+      } else {
+        this.quantity--;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -10230,7 +10291,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-holder[data-v-5d6335e9]{\n    padding: 50px;\n}\n.item-details[data-v-5d6335e9]{\n    padding: 50px;\n}\n", ""]);
+exports.push([module.i, "\n.img-holder[data-v-5d6335e9]{\n    padding: 50px;\n}\n.item-details[data-v-5d6335e9]{\n    padding: 50px;\n}\n.color-selector span[data-v-5d6335e9]{\n    display: block;\n    height: 10px;\n    width: 20px;\n    border: 1px solid black;\n    margin: 0 10px;\n}\n.Cwhite[data-v-5d6335e9]{background-color: white}\n.Cblue[data-v-5d6335e9]{background-color: blue}\n.Cred[data-v-5d6335e9]{background-color: red}\npre[data-v-5d6335e9] {\n    background: #eee;\n    padding: 1rem;\n    border-radius: 5px;\n}\n.quantity-toggle[data-v-5d6335e9] {\n    display: flex;\n}\n.quantity-toggle input[data-v-5d6335e9] {\n    border: 0;\n    border-top: 2px solid #ddd;\n    border-bottom: 2px solid #ddd;\n    width: 2.5rem;\n    text-align: center;\n    padding: 0 .5rem;\n}\n.quantity-toggle button[data-v-5d6335e9] {\n    border: 2px solid #ddd;\n    padding: .5rem;\n    background: #f5f5f5;\n    color: #888;\n    font-size: 1rem;\n    cursor: pointer;\n}\n\n", ""]);
 
 // exports
 
@@ -42224,6 +42285,56 @@ var render = function () {
             ? _c("span", { staticClass: "green-text" }, [_vm._v("available")])
             : _c("span", { staticClass: "red-text" }, [_vm._v("unavailable")]),
         ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("p", [_vm._v("Select Quantity : ")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "quantity-toggle" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function ($event) {
+                  return _vm.decrement()
+                },
+              },
+            },
+            [_vm._v("—")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "QInput",
+            attrs: { type: "text", readonly: "" },
+            domProps: { value: _vm.quantity },
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function ($event) {
+                  return _vm.increment()
+                },
+              },
+            },
+            [_vm._v("＋")]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("button", { staticClass: "add2cart btn btn-success" }, [
+          _vm._v("Add to Cart"),
+        ]),
       ]),
     ]),
   ])
@@ -42238,6 +42349,131 @@ var staticRenderFns = [
         staticClass: "img-fluid",
         attrs: { src: "/img/tshirt.jpeg", alt: "sample t-shirt" },
       }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "color-selector" }, [
+      _c("p", [_vm._v("Select Color : ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check form-check-inline" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "radio",
+            name: "inlineRadioOptions1",
+            id: "inlineRadio1",
+            value: "option1",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "inlineRadio1" } },
+          [_c("span", { staticClass: "Cwhite" })]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check form-check-inline" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "radio",
+            name: "inlineRadioOptions1",
+            id: "inlineRadio2",
+            value: "option2",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "inlineRadio2" } },
+          [_c("span", { staticClass: "Cblue" })]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check form-check-inline" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "radio",
+            name: "inlineRadioOptions1",
+            id: "inlineRadio3",
+            value: "option3",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "inlineRadio3" } },
+          [_c("span", { staticClass: "Cred" })]
+        ),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "size-selector" }, [
+      _c("p", [_vm._v("Select Size : ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check form-check-inline" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "radio",
+            name: "inlineRadioOptions2",
+            id: "inlineRadio11",
+            value: "option1",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "inlineRadio11" } },
+          [_vm._v("S")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check form-check-inline" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "radio",
+            name: "inlineRadioOptions2",
+            id: "inlineRadio22",
+            value: "option2",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "inlineRadio22" } },
+          [_vm._v("M")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-check form-check-inline" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: {
+            type: "radio",
+            name: "inlineRadioOptions2",
+            id: "inlineRadio33",
+            value: "option3",
+            disabled: "",
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "inlineRadio33" } },
+          [_vm._v("L")]
+        ),
+      ]),
     ])
   },
 ]
