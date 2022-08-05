@@ -5242,6 +5242,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "product-details",
   props: ['propSingleItem'],
@@ -5260,6 +5263,18 @@ __webpack_require__.r(__webpack_exports__);
         alert('Negative quantity not allowed');
       } else {
         this.quantity--;
+      }
+    },
+    addToCart: function addToCart() {
+      this.$emit('add-to-cart', this.propSingleItem.id);
+    }
+  },
+  computed: {
+    inStock: function inStock() {
+      if (this.item.available) {
+        return true;
+      } else {
+        return false;
       }
     }
   }
@@ -10291,7 +10306,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-holder[data-v-5d6335e9]{\n    padding: 50px;\n}\n.item-details[data-v-5d6335e9]{\n    padding: 50px;\n}\n.color-selector span[data-v-5d6335e9]{\n    display: block;\n    height: 10px;\n    width: 20px;\n    border: 1px solid black;\n    margin: 0 10px;\n}\n.Cwhite[data-v-5d6335e9]{background-color: white}\n.Cblue[data-v-5d6335e9]{background-color: blue}\n.Cred[data-v-5d6335e9]{background-color: red}\npre[data-v-5d6335e9] {\n    background: #eee;\n    padding: 1rem;\n    border-radius: 5px;\n}\n.quantity-toggle[data-v-5d6335e9] {\n    display: flex;\n}\n.quantity-toggle input[data-v-5d6335e9] {\n    border: 0;\n    border-top: 2px solid #ddd;\n    border-bottom: 2px solid #ddd;\n    width: 2.5rem;\n    text-align: center;\n    padding: 0 .5rem;\n}\n.quantity-toggle button[data-v-5d6335e9] {\n    border: 2px solid #ddd;\n    padding: .5rem;\n    background: #f5f5f5;\n    color: #888;\n    font-size: 1rem;\n    cursor: pointer;\n}\n\n", ""]);
+exports.push([module.i, "\n.img-holder[data-v-5d6335e9]{\n    padding: 50px;\n}\n.item-details[data-v-5d6335e9]{\n    padding: 50px;\n}\n.color-selector span[data-v-5d6335e9]{\n    display: block;\n    height: 10px;\n    width: 20px;\n    border: 1px solid black;\n    margin: 0 10px;\n}\n.Cwhite[data-v-5d6335e9]{background-color: white}\n.Cblue[data-v-5d6335e9]{background-color: blue}\n.Cred[data-v-5d6335e9]{background-color: red}\npre[data-v-5d6335e9] {\n    background: #eee;\n    padding: 1rem;\n    border-radius: 5px;\n}\n.quantity-toggle[data-v-5d6335e9] {\n    display: flex;\n}\n.quantity-toggle input[data-v-5d6335e9] {\n    border: 0;\n    border-top: 2px solid #ddd;\n    border-bottom: 2px solid #ddd;\n    width: 2.5rem;\n    text-align: center;\n    padding: 0 .5rem;\n}\n.quantity-toggle button[data-v-5d6335e9] {\n    border: 2px solid #ddd;\n    padding: .5rem;\n    background: #f5f5f5;\n    color: #888;\n    font-size: 1rem;\n    cursor: pointer;\n}\n.activeBtn[data-v-5d6335e9]{\n    background-color: #4cc780;\n}\n.disabledButton[data-v-5d6335e9]{\n    background-color: gainsboro;\n}\n", ""]);
 
 // exports
 
@@ -42332,9 +42347,18 @@ var render = function () {
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("button", { staticClass: "add2cart btn btn-success" }, [
-          _vm._v("Add to Cart"),
-        ]),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn",
+            class: [_vm.item.available ? "activeBtn" : "disabledButton"],
+            attrs: { id: "add2cart", disabled: !_vm.inStock },
+            on: { click: _vm.addToCart },
+          },
+          [_vm._v("\n                Add to cart\n            ")]
+        ),
       ]),
     ]),
   ])
@@ -54729,7 +54753,17 @@ Vue.component('product-details', __webpack_require__(/*! ./components/product-de
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      mycart: []
+    };
+  },
+  methods: {
+    updateCart: function updateCart(id) {
+      this.mycart.push(id);
+    }
+  }
 });
 
 /***/ }),

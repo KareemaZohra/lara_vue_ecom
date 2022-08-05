@@ -30,4 +30,14 @@ Vue.component('product-details', require('./components/product-details.vue').def
 
 const app = new Vue({
     el: '#app',
+    data() {
+        return{
+            mycart : [],
+        }
+    },
+    methods: {
+        updateCart(id){
+            this.mycart.push(id);
+        }
+    }
 });

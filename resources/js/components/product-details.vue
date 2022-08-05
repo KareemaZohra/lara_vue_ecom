@@ -59,8 +59,11 @@
                 </div>
 
                 <br>
-
-                <button class="add2cart btn btn-success">Add to Cart</button>
+                <br>
+                <button id="add2cart" v-on:click="addToCart" :disabled="!inStock" class="btn"
+                        :class="[ item.available? 'activeBtn' : 'disabledButton' ]">
+                    Add to cart
+                </button>
             </div>
         </div>
     </div>
@@ -86,6 +89,19 @@ export default {
             } else {
                 this.quantity--
             }
+        },
+        addToCart(){
+            this.$emit('add-to-cart', this.propSingleItem.id)
+        }
+    },
+    computed: {
+        inStock(){
+            if(this.item.available){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
     }
 }
@@ -108,17 +124,14 @@ export default {
 .Cwhite{background-color: white}
 .Cblue{background-color: blue}
 .Cred{background-color: red}
-
 pre {
     background: #eee;
     padding: 1rem;
     border-radius: 5px;
 }
-
 .quantity-toggle {
     display: flex;
 }
-
 .quantity-toggle input {
     border: 0;
     border-top: 2px solid #ddd;
@@ -127,7 +140,6 @@ pre {
     text-align: center;
     padding: 0 .5rem;
 }
-
 .quantity-toggle button {
     border: 2px solid #ddd;
     padding: .5rem;
@@ -136,5 +148,10 @@ pre {
     font-size: 1rem;
     cursor: pointer;
 }
-
+.activeBtn{
+    background-color: #4cc780;
+}
+.disabledButton{
+    background-color: gainsboro;
+}
 </style>

@@ -17,6 +17,9 @@
 
 
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> <i class="fas fa-shopping-cart"></i></a>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
