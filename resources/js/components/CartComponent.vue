@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="" alt="">
+                <img class="img-thumbnail demo-img" src="/img/noPhoto.jpg" alt="">
             </div>
             <div class="col">
                 <p>Name</p>
@@ -48,5 +48,9 @@ export default {
 <style scoped>
 .container{
     margin-top: 100px;
+}
+.demo-img{
+    height: 100px;
+    width: 100px;
 }
 </style>

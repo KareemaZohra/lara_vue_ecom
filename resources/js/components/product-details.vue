@@ -76,7 +76,9 @@ export default {
     data(){
         return{
             item: this.propSingleItem,
-            quantity: 1
+            quantity: 1,
+            selectedColor: "",
+            selectedSize: ""
         }
     },
     methods:{
@@ -91,7 +93,8 @@ export default {
             }
         },
         addToCart(){
-            this.$emit('add-to-cart', this.propSingleItem.id)
+            this.$emit('add-to-cart', this.propSingleItem.id);
+
         }
     },
     computed: {
