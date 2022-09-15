@@ -17,36 +17,24 @@
 
                 <div class="color-selector">
                     <p>Select Color : </p>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1">
-                        <label class="form-check-label" for="inlineRadio1"><span class="Cwhite"></span></label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="option2">
-                        <label class="form-check-label" for="inlineRadio2"> <span class="Cblue"></span></label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio3" value="option3">
-                        <label class="form-check-label" for="inlineRadio3"> <span class="Cred"></span></label>
-                    </div>
+                    <input type="radio" id="white" name="color" v-model="selectedColor" value="white" >
+                    <label for="white">white</label>
+                    <input type="radio" id="blue" name="color" v-model="selectedColor" value="blue" >
+                    <label for="blue">blue</label>
+                    <input type="radio" id="red" name="color" v-model="selectedColor" value="red" >
+                    <label for="red">red</label>
                 </div>
 
                 <br>
 
                 <div class="size-selector">
                     <p>Select Size : </p>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio11" value="option1">
-                        <label class="form-check-label" for="inlineRadio11">S</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio22" value="option2">
-                        <label class="form-check-label" for="inlineRadio22">M</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio33" value="option3" disabled>
-                        <label class="form-check-label" for="inlineRadio33">L</label>
-                    </div>
+                    <input type="radio" id="small" name="size" v-model="selectedSize" value="small" >
+                    <label for="small">S</label>
+                    <input type="radio" id="medium" name="size" v-model="selectedSize" value="medium" >
+                    <label for="medium">M</label>
+                    <input type="radio" id="large" name="size" v-model="selectedSize" value="large" >
+                    <label for="large">L</label>
                 </div>
 
                 <br>
@@ -77,8 +65,8 @@ export default {
         return{
             item: this.propSingleItem,
             quantity: 1,
-            selectedColor: "",
-            selectedSize: ""
+            selectedColor: null,
+            selectedSize: null
         }
     },
     methods:{
@@ -92,9 +80,26 @@ export default {
                 this.quantity--
             }
         },
+        onColorChanged(){
+            selectedColor : this.selectedColor;
+        },
+        onSizeChanged(){
+            selectedSize : this.selectedSize;
+        },
         addToCart(){
             this.$emit('add-to-cart', this.propSingleItem.id);
-
+            let addToCartRequestPayload = {
+                itemId: this.propSingleItem.id,
+                itemName: this.propSingleItem.name,
+                itemColor: this.selectedColor,
+                itemSize: this.selectedSize,
+                itemPrice: this.propSingleItem.price,
+                itemQty: this.quantity
+            };
+            let url = '/' + context.state.appConfig.locale + '/cart/add';
+            axios.post(url,addToCartRequestPayload)
+            //console.log(addToCartRequestPayload);
+            // window.location.href='/cart';
         }
     },
     computed: {
