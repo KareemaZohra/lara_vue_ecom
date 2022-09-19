@@ -4,5 +4,5 @@
 @endsection
 
 @section('content')
-    <cart-view></cart-view>
+    <cart-view :prop-cart='{!! htmlspecialchars(json_encode($cart), ENT_QUOTES, 'UTF-8') !!}'></cart-view>
 @endsection

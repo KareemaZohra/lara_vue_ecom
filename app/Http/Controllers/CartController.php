@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function index(){
-        return view('cart-view');
+        $cart = DB::table('carts')
+            ->select('*')
+            ->get();
+
+        return view('cart-view',compact('cart'));
     }
+
     public function add(Request $request){
         $input = $request->all();
 

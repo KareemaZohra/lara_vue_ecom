@@ -101,12 +101,10 @@ export default {
 
             axios.post(url,addToCartRequestPayload)
                 .then(res => {
-                    console.log();
+                    window.location.href='/cart';
                 }).catch(err => {
                     console.log('error occured while adding to cart');
             })
-            //console.log(addToCartRequestPayload);
-            // window.location.href='/cart';
         }
     },
     computed: {

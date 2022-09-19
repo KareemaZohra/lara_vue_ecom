@@ -1,20 +1,20 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row" v-for="item in cartItems">
             <div class="col">
                 <img class="img-thumbnail demo-img" src="/img/noPhoto.jpg" alt="">
             </div>
             <div class="col">
-                <p>Name</p>
+                <p>{{ item.name }}</p>
                 <p>
-                    <spann>color</spann> , <span>size</span>
+                    <spann>{{ item.color }}</spann> , <span>{{ item.size }}</span>
                 </p>
             </div>
             <div class="col">
-                <p>Price</p>
+                <p>{{ item.price }}</p>
             </div>
             <div class="col">
-                <p>qty</p>
+                <p>{{ item.quantity }}</p>
             </div>
             <div class="col">
                 <a href="">x</a>
@@ -36,11 +36,11 @@
 <script>
 export default {
     name : "cart-view",
+    props:['propCart'],
     data(){
-
-    },
-    methods:{
-
+        return{
+            cartItems : this.propCart
+        }
     }
 }
 </script>
