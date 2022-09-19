@@ -17,31 +17,42 @@
                 <p>{{ item.quantity }}</p>
             </div>
             <div class="col">
-                <a href="">x</a>
+                <a href="#" @click="deleteFromCart(item.id)">x</a>
             </div>
             <hr>
         </div>
 
         <div class="row">
             <div class="col text-center">
-                <a class="btn btn-primary" href="/all-product">Shop More</a>
-            </div>
-            <div class="col text-center">
-                <a class="btn btn-success" href="/checkout">Checkout</a>
+                <a class="btn btn-success" href="#">Place Order</a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-    name : "cart-view",
+    name : "checkout-page",
     props:['propCart'],
     data(){
         return{
             cartItems : this.propCart
         }
+    },
+    methods:{
+        deleteFromCart(id){
+            let url = '/cart/remove/'+id;
+            axios.delete(url)
+                .then(res => {
+                    window.location.href='/checkout';
+                }).catch(err => {
+                console.log('deleting from cart failed');
+            })
+        }
     }
+
 }
 </script>
 

@@ -26,4 +26,8 @@ class CartController extends Controller
             'quantity' => $input['itemQty']
         ]);
     }
+
+    public function delete($id){
+        DB::table('carts')->where('id', '=', $id)->delete();
+    }
 }
