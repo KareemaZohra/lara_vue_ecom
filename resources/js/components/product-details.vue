@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name : "product-details",
     props: ['propSingleItem'],
@@ -96,8 +97,14 @@ export default {
                 itemPrice: this.propSingleItem.price,
                 itemQty: this.quantity
             };
-            let url = '/' + context.state.appConfig.locale + '/cart/add';
+            let url = '/cart/add';
+
             axios.post(url,addToCartRequestPayload)
+                .then(res => {
+                    console.log();
+                }).catch(err => {
+                    console.log('error occured while adding to cart');
+            })
             //console.log(addToCartRequestPayload);
             // window.location.href='/cart';
         }
