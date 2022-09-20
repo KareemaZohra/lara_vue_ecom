@@ -1,5 +1,13 @@
 <template>
     <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">Product</div>
+            <div class="col">Price</div>
+            <div class="col">Quantity</div>
+            <div class="col"></div>
+        </div>
+        <hr>
         <div class="row" v-for="item in cartItems">
             <div class="col">
                 <img class="img-thumbnail demo-img" src="/img/noPhoto.jpg" alt="">
@@ -14,7 +22,7 @@
                 <p>{{ item.price }}</p>
             </div>
             <div class="col">
-                <p>{{ item.quantity }}</p>
+               <quantity-input :prop-qty="item.quantity"></quantity-input>
             </div>
             <div class="col">
                 <a href="#" @click="deleteFromCart(item.id)">x</a>

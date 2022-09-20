@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    product Details
+    Product Details
 @endsection
 
 @section('content')

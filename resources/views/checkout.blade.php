@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Collection page
+    Checkout
 @endsection
 
 @section('content')

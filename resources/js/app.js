@@ -24,6 +24,7 @@ Vue.component('product-list', require('./components/ProductList.vue').default);
 Vue.component('product-details', require('./components/product-details.vue').default);
 Vue.component('cart-view', require('./components/CartComponent.vue').default);
 Vue.component('checkout-page', require('./components/CheckoutComponent.vue').default);
+Vue.component('quantity-input', require('./components/QuantityComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
