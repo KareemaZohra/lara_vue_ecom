@@ -17,12 +17,10 @@
 
                 <div class="color-selector">
                     <p>Select Color : </p>
-                    <input type="radio" id="white" name="color" v-model="selectedColor" value="white" >
-                    <label for="white">white</label>
-                    <input type="radio" id="blue" name="color" v-model="selectedColor" value="blue" >
-                    <label for="blue">blue</label>
-                    <input type="radio" id="red" name="color" v-model="selectedColor" value="red" >
-                    <label for="red">red</label>
+                        <div v-for="color in itemColors">
+                            <input type="radio" id="color" name="color" v-model="selectedColor" :value="color" >
+                            <label for="color">{{color}}</label>
+                        </div>
                 </div>
 
                 <br>
@@ -61,10 +59,12 @@
 import axios from 'axios';
 export default {
     name : "product-details",
-    props: ['propSingleItem'],
+    props: ['propSingleItem','propColors','propSizes'],
     data(){
         return{
             item: this.propSingleItem,
+            itemColors : this.propColors,
+            itemSizes : this.propSizes,
             quantity: 1,
             selectedColor: null,
             selectedSize: null
@@ -116,6 +116,9 @@ export default {
                 return false;
             }
         }
+    },
+    created() {
+        console.log(this.propColors)
     }
 }
 </script>
