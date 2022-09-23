@@ -19,7 +19,10 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         {{-- below href is the name route --}}
-                        <a class="nav-link" href="{{ route('cart-view') }}"> <i class="fas fa-shopping-cart"></i></a>
+                        <a class="nav-link" href="{{ route('cart-view') }}">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">{{($cartCount ?? '0')}}</span>
+                        </a>
                     </li>
                     <!-- Authentication Links -->
                     @guest
