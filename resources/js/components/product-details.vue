@@ -36,11 +36,8 @@
                 <br>
 
                 <p>Select Quantity : </p>
-                <div class="quantity-toggle">
-                    <button @click="decrement()">&mdash;</button>
-                    <input type="text" :value="quantity" readonly class="QInput">
-                    <button @click="increment()">&#xff0b;</button>
-                </div>
+
+                <quantity-input prop-qty="1" @qty-updated="qtyUpdated"></quantity-input>
 
                 <br>
                 <br>
@@ -63,30 +60,22 @@ export default {
             item: this.propSingleItem,
             itemColors : this.propColors,
             itemSizes : this.propSizes,
-            quantity: 1,
+            quantity: 0,
             selectedColor: null,
             selectedSize: null
         }
     },
     methods:{
-        increment () {
-            this.quantity++
-        },
-        decrement () {
-            if(this.quantity === 1) {
-                alert('Negative quantity not allowed')
-            } else {
-                this.quantity--
-            }
-        },
         onColorChanged(){
             selectedColor : this.selectedColor;
         },
         onSizeChanged(){
             selectedSize : this.selectedSize;
         },
+        qtyUpdated(qty){
+            this.quantity=qty;
+        },
         addToCart(){
-            this.$emit('add-to-cart', this.propSingleItem.id);
             let addToCartRequestPayload = {
                 itemId: this.propSingleItem.id,
                 itemName: this.propSingleItem.name,

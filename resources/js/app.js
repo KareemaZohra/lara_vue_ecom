@@ -34,14 +34,4 @@ Vue.component('quantity-input', require('./components/QuantityComponent.vue').de
 
 const app = new Vue({
     el: '#app',
-    data() {
-        return{
-            cart : [],
-        }
-    },
-    methods: {
-        updateCart(id){
-            this.cart.push(id);
-        }
-    }
 });

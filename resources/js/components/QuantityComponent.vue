@@ -17,6 +17,9 @@ export default {
         }
     },
     methods:{
+        sendQuantity(){
+            this.$emit('qty-updated',this.quantity);
+        },
         increment () {
             this.quantity++
         },
