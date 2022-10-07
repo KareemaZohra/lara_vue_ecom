@@ -17,22 +17,20 @@
 
                 <div class="color-selector">
                     <p>Select Color : </p>
-                        <div v-for="color in itemColors">
-                            <input type="radio" id="color" name="color" v-model="selectedColor" :value="color" >
-                            <label for="color">{{color}}</label>
-                        </div>
+                    <div v-for="color in itemColors">
+                        <input type="radio" id="color" name="color" v-model="selectedColor" :value="color" >
+                        <label for="color">{{ color }}</label>
+                    </div>
                 </div>
 
                 <br>
 
                 <div class="size-selector">
                     <p>Select Size : </p>
-                    <input type="radio" id="small" name="size" v-model="selectedSize" value="small" >
-                    <label for="small">S</label>
-                    <input type="radio" id="medium" name="size" v-model="selectedSize" value="medium" >
-                    <label for="medium">M</label>
-                    <input type="radio" id="large" name="size" v-model="selectedSize" value="large" >
-                    <label for="large">L</label>
+                    <div v-for="size in itemSizes">
+                        <input type="radio" id="size" name="size" v-model="selectedSize" :value="size" >
+                        <label for="size">{{ size }}</label>
+                    </div>
                 </div>
 
                 <br>
@@ -118,7 +116,7 @@ export default {
         }
     },
     created() {
-        console.log(this.propColors)
+        console.log(this.itemColors);
     }
 }
 </script>
