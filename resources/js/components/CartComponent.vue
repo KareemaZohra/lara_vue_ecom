@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div class="row">
+            <h2 class="text-center mb-5"><u>Your Cart</u></h2>
+        </div>
         <div class="row" v-for="item in cartItems">
             <div class="col">
                 <img class="img-thumbnail demo-img" src="/img/noPhoto.jpg" alt="">
@@ -15,9 +18,6 @@
             </div>
             <div class="col">
                 <p>{{ item.quantity }}</p>
-            </div>
-            <div class="col">
-                <a href="">x</a>
             </div>
             <hr>
         </div>

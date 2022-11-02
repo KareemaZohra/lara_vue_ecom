@@ -60,7 +60,7 @@ export default {
             item: this.propSingleItem,
             itemColors : this.propColors,
             itemSizes : this.propSizes,
-            quantity: 0,
+            quantity: 1,
             selectedColor: null,
             selectedSize: null
         }
@@ -74,6 +74,7 @@ export default {
         },
         qtyUpdated(qty){
             this.quantity=qty;
+            console.log(qty);
         },
         addToCart(){
             let addToCartRequestPayload = {
@@ -105,7 +106,6 @@ export default {
         }
     },
     created() {
-        console.log(this.itemColors);
     }
 }
 </script>

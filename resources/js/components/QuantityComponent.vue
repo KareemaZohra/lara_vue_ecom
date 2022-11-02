@@ -21,13 +21,15 @@ export default {
             this.$emit('qty-updated',this.quantity);
         },
         increment () {
-            this.quantity++
+            this.quantity++;
+            this.sendQuantity();
         },
         decrement () {
             if(this.quantity === 1) {
                 alert('Negative quantity not allowed')
             } else {
-                this.quantity--
+                this.quantity--;
+                this.sendQuantity();
             }
         }
     }
