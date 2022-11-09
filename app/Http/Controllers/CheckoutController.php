@@ -14,6 +14,11 @@ class CheckoutController extends Controller
             ->select('*')
             ->get();
 
-        return view('checkout',compact('cart'));
+        $cartTotal = 0;
+        foreach($cart as $item){
+            $cartTotal += $item->price*$item->quantity;
+        }
+
+        return view('checkout',compact('cart','cartTotal'));
     }
 }

@@ -74,7 +74,6 @@ export default {
         },
         qtyUpdated(qty){
             this.quantity=qty;
-            console.log(qty);
         },
         addToCart(){
             let addToCartRequestPayload = {
