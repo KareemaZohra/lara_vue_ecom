@@ -1,6 +1,9 @@
 <template>
     <div class="container">
         <div class="row">
+            <h2 class="text-center mb-5"><u>Checkout Page</u></h2>
+        </div>
+        <div class="row">
             <div class="col"></div>
             <div class="col">Product</div>
             <div class="col">Unit Price</div>
@@ -16,7 +19,7 @@
             <div class="col">
                 <p>{{ item.name }}</p>
                 <p>
-                    <spann>{{ item.color }}</spann> , <span>{{ item.size }}</span>
+                    <span>{{ item.color }}</span> , <span>{{ item.size }}</span>
                 </p>
             </div>
             <div class="col">

@@ -3,6 +3,14 @@
         <div class="row">
             <h2 class="text-center mb-5"><u>Your Cart</u></h2>
         </div>
+        <div class="row text-center">
+            <div class="col"></div>
+            <div class="col">Product</div>
+            <div class="col">Unit Price</div>
+            <div class="col text-end">Quantity</div>
+            <div class="col"></div>
+            <hr>
+        </div>
         <div class="row" v-for="item in cartItems">
             <div class="col">
                 <img class="img-thumbnail demo-img" src="/img/noPhoto.jpg" alt="">
