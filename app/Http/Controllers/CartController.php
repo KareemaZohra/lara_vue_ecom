@@ -14,6 +14,17 @@ class CartController extends Controller
         return view('cart-view',compact('cart'));
     }
 
+    public function checkInventory($id,$color,$size){
+        $inventory = DB::table('variants_models')
+                    ->select('quantity')
+                    ->where('product_id', $id)
+                    ->where('color', $color)
+                    ->where('size', $size)
+                    ->get();
+
+        return $inventory;
+    }
+
     public function add(Request $request){
         $input = $request->all();
 
