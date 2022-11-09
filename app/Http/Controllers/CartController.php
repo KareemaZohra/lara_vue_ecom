@@ -30,4 +30,12 @@ class CartController extends Controller
     public function delete($id){
         DB::table('carts')->where('id', '=', $id)->delete();
     }
+
+    public function update(Request $request){
+        $input = $request->all();
+        DB::table('carts')
+            ->where('id', '=', $input['id'])
+            ->update(['quantity'=>$input['quantity']]);
+    }
+
 }

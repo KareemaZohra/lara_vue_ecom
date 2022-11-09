@@ -70,13 +70,20 @@ export default {
             })
         },
         qtyUpdated(qty,itemId){
-            // axios post cart update
-            // redirect to same page again
             // try checking qty available in variants table or not
-        }
-    },
-    computed: {
+            let url = '/cart/update/';
+            let cartUpdatePayload = {
+                id: itemId,
+                quantity: qty
+            };
 
+            axios.put(url,cartUpdatePayload)
+                .then(res => {
+                    window.location.href='/checkout';
+                }).catch(err => {
+                console.log('Updating cart failed');
+            })
+        }
     }
 
 }
