@@ -21,21 +21,33 @@ class CartController extends Controller
                     ->where('color', $color)
                     ->where('size', $size)
                     ->get();
-
-        return $inventory;
+        $totalInv = array_column( $inventory->toArray(), 'quantity');
+        $total = 0;
+        foreach($totalInv as $inv){
+            $total+=$inv;
+        }
+        return $total;
     }
 
     public function add(Request $request){
         $input = $request->all();
 
-        DB::table('carts')->insert([
-            'itemid' => $input['itemId'],
-            'name' => $input['itemName'],
-            'price' => $input['itemPrice'],
-            'size' => $input['itemSize'],
-            'color' => $input['itemColor'],
-            'quantity' => $input['itemQty']
-        ]);
+        $inv = $this->checkInventory($input['itemId'],$input['itemColor'],$input['itemSize']);
+
+        if($inv<$input['itemQty']){
+            return false;
+        }
+        else{
+            DB::table('carts')->insert([
+                'itemid' => $input['itemId'],
+                'name' => $input['itemName'],
+                'price' => $input['itemPrice'],
+                'size' => $input['itemSize'],
+                'color' => $input['itemColor'],
+                'quantity' => $input['itemQty']
+            ]);
+        }
+
     }
 
     public function delete($id){

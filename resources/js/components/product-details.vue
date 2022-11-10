@@ -90,7 +90,7 @@ export default {
                 .then(res => {
                     window.location.href='/cart';
                 }).catch(err => {
-                    console.log('error occured while adding to cart');
+                    alert("Not enough stock !!");
             })
         }
     },
@@ -103,8 +103,6 @@ export default {
                 return false;
             }
         }
-    },
-    created() {
     }
 }
 </script>
