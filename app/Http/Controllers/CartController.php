@@ -21,7 +21,9 @@ class CartController extends Controller
                     ->where('color', $color)
                     ->where('size', $size)
                     ->get();
-        $totalInv = array_column( $inventory->toArray(), 'quantity');
+
+       $totalInv = array_column($inventory->toArray(), 'quantity');
+
         $total = 0;
         foreach($totalInv as $inv){
             $total+=$inv;
@@ -56,9 +58,21 @@ class CartController extends Controller
 
     public function update(Request $request){
         $input = $request->all();
-        DB::table('carts')
-            ->where('id', '=', $input['id'])
-            ->update(['quantity'=>$input['quantity']]);
+        $itemId = DB::table('carts')
+                    ->where('id', '=', $input['id'])
+                    ->first()
+                    ->itemid;
+
+        $inv = $this->checkInventory($itemId,$input['color'],$input['size']);
+
+        if($inv<$input['quantity']){
+            return false;
+        }
+        else{
+            DB::table('carts')
+                ->where('id', '=', $input['id'])
+                ->update(['quantity'=>$input['quantity']]);
+        }
     }
 
 }

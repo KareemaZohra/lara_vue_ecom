@@ -26,7 +26,7 @@
                 <p>{{ item.price }}</p>
             </div>
             <div class="col">
-               <quantity-input :prop-qty="item.quantity" @qty-updated="qtyUpdated($event,item.id)"></quantity-input>
+               <quantity-input :prop-qty="item.quantity" @qty-updated="qtyUpdated($event,item.id,item.color,item.size)"></quantity-input>
             </div>
             <div class="col">
                 <p>{{ item.price*item.quantity }}</p>
@@ -72,19 +72,21 @@ export default {
                 console.log('deleting from cart failed');
             })
         },
-        qtyUpdated(qty,itemId){
+        qtyUpdated(qty,itemId,itemColor,itemSize){
             // try checking qty available in variants table or not
             let url = '/cart/update/';
             let cartUpdatePayload = {
                 id: itemId,
-                quantity: qty
+                quantity: qty,
+                color: itemColor,
+                size: itemSize
             };
 
             axios.put(url,cartUpdatePayload)
                 .then(res => {
-                    window.location.href='/checkout';
+                   window.location.href='/checkout';
                 }).catch(err => {
-                console.log('Updating cart failed');
+                    alert("Not enough stock !!");
             })
         }
     }

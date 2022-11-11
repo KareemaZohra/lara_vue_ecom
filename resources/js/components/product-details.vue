@@ -9,7 +9,7 @@
                 <h3>Price : {{ item.price }}</h3>
                 <p>
                     Stock :
-                    <span class="green-text" v-if="item.available">available</span>
+                    <span class="green-text" v-if="inStock">available</span>
                     <span class="red-text" v-else>unavailable</span>
                 </p>
 
@@ -42,7 +42,7 @@
                 <br>
                 <br>
                 <button id="add2cart" v-on:click="addToCart" :disabled="!inStock" class="btn"
-                        :class="[ item.available? 'activeBtn' : 'disabledButton' ]">
+                        :class="[ inStock? 'activeBtn' : 'disabledButton' ]">
                     Add to cart
                 </button>
             </div>
@@ -54,7 +54,7 @@
 import axios from 'axios';
 export default {
     name : "product-details",
-    props: ['propSingleItem','propColors','propSizes'],
+    props: ['propSingleItem','propColors','propSizes','propInventory'],
     data(){
         return{
             item: this.propSingleItem,
@@ -96,7 +96,7 @@ export default {
     },
     computed: {
         inStock(){
-            if(this.item.available){
+            if(this.propInventory>0){
                 return true;
             }
             else{
@@ -121,16 +121,10 @@ export default {
     border: 1px solid black;
     margin: 0 10px;
 }
-.Cwhite{background-color: white}
-.Cblue{background-color: blue}
-.Cred{background-color: red}
 pre {
     background: #eee;
     padding: 1rem;
     border-radius: 5px;
-}
-.quantity-toggle {
-    display: flex;
 }
 .quantity-toggle input {
     border: 0;
