@@ -12,10 +12,6 @@ class ProductController extends Controller
     {
         $item = Product_model::query()->where('id', $id)->first();
 
-        $inventory = Variants_model::query()
-            ->where('product_id', $id)
-            ->sum('quantity');
-
         $sizeGroup = Variants_model::query()
             ->select('size')
             ->groupBy('size')
@@ -30,6 +26,6 @@ class ProductController extends Controller
         $sizes = array_column( $sizeGroup->toArray(), 'size');
         $colors = array_column( $colorGroup->toArray(), 'color');
 
-        return view('single-product',compact('item','sizes','colors','inventory'));
+        return view('single-product',compact('item','sizes','colors'));
     }
 }

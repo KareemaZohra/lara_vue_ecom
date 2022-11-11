@@ -31,6 +31,21 @@ class CartController extends Controller
         return $total;
     }
 
+    public function updateInventory($qty,$id){
+
+        $available_inventory = DB::table('product_models')
+            ->where('id', '=', $id)
+            ->first()
+            ->available;
+
+        $new_inventory = $available_inventory-$qty;
+
+        DB::table('product_models')
+            ->where('id', '=', $id)
+            ->update(['available'=>$new_inventory]);
+
+    }
+
     public function add(Request $request){
         $input = $request->all();
 
@@ -48,6 +63,7 @@ class CartController extends Controller
                 'color' => $input['itemColor'],
                 'quantity' => $input['itemQty']
             ]);
+            $this->updateInventory($input['itemQty'],$input['itemId']);
         }
 
     }

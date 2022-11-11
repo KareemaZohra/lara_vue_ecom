@@ -54,7 +54,7 @@
 import axios from 'axios';
 export default {
     name : "product-details",
-    props: ['propSingleItem','propColors','propSizes','propInventory'],
+    props: ['propSingleItem','propColors','propSizes'],
     data(){
         return{
             item: this.propSingleItem,
@@ -96,7 +96,7 @@ export default {
     },
     computed: {
         inStock(){
-            if(this.propInventory>0){
+            if(this.item.available>0){
                 return true;
             }
             else{
